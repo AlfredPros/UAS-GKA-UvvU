@@ -8,6 +8,9 @@ public class PlayerControl : MonoBehaviour
     void Start()
     {
         // Testing.
+        // testing 2.
+        // testing 3.
+
     }
 
     // Update is called once per frame
