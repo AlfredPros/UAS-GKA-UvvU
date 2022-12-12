@@ -5,6 +5,10 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
     Animator anim;
+    public static GameObject controlledBy;
+
+    // Camera Stuff
+    public Transform camera;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +22,11 @@ public class PlayerControl : MonoBehaviour
         /// Run: Input.GetAxis("Fire3")
         /// Jump: Input.GetAxis("Submit")
 
+        if (controlledBy != null) {  // For sitting down trigger
+            return;
+        }
         float translation = Input.GetAxis("Vertical");
+        this.transform.eulerAngles = new Vector3(0, camera.transform.localRotation.eulerAngles.y, 0);
 
         // Jump Check
         if (Input.GetAxis("Submit") != 0) {
