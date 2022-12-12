@@ -12,8 +12,8 @@ public class CameraNans : MonoBehaviour
 
     public float MouseSensitivity = 4f;
     public float ScrollSensitvity = 2f;
-    public float OrbitDampening = 10f;
-    public float ScrollDampening = 6f;
+    public float OrbitDampening = 12f;
+    public float ScrollDampening = 8f;
     public float minYRotation = -15f;
     public float maxYRotation = 90f;
 
