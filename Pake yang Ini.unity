@@ -4177,7 +4177,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400138, guid: e5e18f91ac2d44b4b898c39356167f3a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 45
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 400138, guid: e5e18f91ac2d44b4b898c39356167f3a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -12553,8 +12553,13 @@ MonoBehaviour:
   ScrollSensitvity: 2
   OrbitDampening: 12
   ScrollDampening: 8
-  minYRotation: -15
+  minYRotation: -30
   maxYRotation: 90
+  minDistance: 0.5
+  maxDistance: 4
+  smooth: 16
+  dollyDirAdjusted: {x: 0, y: 0, z: 0}
+  distance: 0
 --- !u!81 &1880379786
 AudioListener:
   m_ObjectHideFlags: 0
