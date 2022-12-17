@@ -19,7 +19,7 @@ public class CameraNans : MonoBehaviour
     public float maxYRotation = 90f;
 
     // Collision
-    public float minDistance = 1.5f;
+    public float minDistance = 0.5f;
 	public float smooth = 16.0f;
 	Vector3 dollyDir;
 	public Vector3 dollyDirAdjusted;
