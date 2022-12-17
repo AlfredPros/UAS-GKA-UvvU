@@ -44,9 +44,9 @@ public class door_locked : MonoBehaviour
         generator = cs.isGeneratorOn;
     
 
-        if (!doorLocked)
+        if (!doorLocked )
         {
-            if (!triggerOnce)
+            if (!triggerOnce && !generator)
             {
                 this.GetComponent<MeshRenderer>().material = green_one;
                 indicator.color = Color.green;

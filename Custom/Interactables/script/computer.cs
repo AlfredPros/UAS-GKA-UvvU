@@ -56,14 +56,14 @@ public class computer : MonoBehaviour
         if(!isGeneratorOn)
         {
             //turn off generator code here...
-            foreach (GameObject lightObject in lights) lightObject.SetActive(false);
+            foreach (GameObject lightObject in lights) lightObject.GetComponent<Light>().enabled = false;
             comp_info.text = "Generator has been turn off";
             isGeneratorOn = true;
         }
         else
         {
             //turn on generator code here...
-            foreach (GameObject lightObject in lights) lightObject.SetActive(true);
+            foreach (GameObject lightObject in lights) lightObject.GetComponent<Light>().enabled = true;
             comp_info.text = "Generator has been turn on";
             isGeneratorOn = false;
         }
