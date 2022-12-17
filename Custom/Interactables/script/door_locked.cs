@@ -56,7 +56,7 @@ public class door_locked : MonoBehaviour
                 doorAnim.SetBool("isOpen", true);
                 doorFlag = true;
             }
-            else if (Input.GetKeyDown(KeyCode.E) && doorFlag && isCollide && generator)
+            else if (Input.GetKeyDown(KeyCode.E) && doorFlag && isCollide)
             {
 
                 doorAnim.SetBool("isOpen", false);
