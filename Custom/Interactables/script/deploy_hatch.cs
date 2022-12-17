@@ -37,7 +37,7 @@ public class deploy_hatch : MonoBehaviour
         }
         if(isCollide)
         {
-            info.text = "hatch has already been opened";
+            info.text = "Hatch has already been opened";
         }
     }
 

@@ -81,7 +81,7 @@ public class door_locked : MonoBehaviour
 
         else
         {
-            info.text = "door is locked\nunlocked it using the computer";
+            info.text = "Door is locked\nunlocked it using the computer";
         }
     }
 
