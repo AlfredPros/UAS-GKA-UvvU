@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerVariable : MonoBehaviour
 {
     public GameObject keyCard;
+    public bool nearKeyCard;
     public Text info;
     public Text mission;
     public bool have_keycard;
@@ -16,13 +17,10 @@ public class PlayerVariable : MonoBehaviour
         mission.text = "Mission:\nGet the key card";
         have_keycard = false;
         generatorOff = false;
+        nearKeyCard = false;
     }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.tag == "card")
-        {
-            info.text = "Press E to \n take the key card";
+    private void OnGUI() {
+        if (nearKeyCard) {
             if (Input.GetKeyDown(KeyCode.E))
             {
                 have_keycard = true;
@@ -34,14 +32,22 @@ public class PlayerVariable : MonoBehaviour
                 mission.text = "Mission:\nOpen the storage room";
                 info.text = "";
             }
-        }
+        }   
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "card")
+        {
+            info.text = "Press E to \n take the key card";
+            nearKeyCard = true;
+        }
+    }
     private void OnTriggerExit(Collider other)
     {
       
         info.text = "";
-     
+        nearKeyCard = false;
     }
 }
 
