@@ -7,6 +7,8 @@ public class PlayerControl : MonoBehaviour
     Animator anim;
     public static GameObject controlledBy;
 
+    public bool isAlive;
+
     // Camera Stuff
     public new Transform camera;
 
@@ -14,6 +16,7 @@ public class PlayerControl : MonoBehaviour
     void Start()
     {
         anim = this.GetComponent<Animator>();
+        isAlive = true;
     }
 
     // Update is called once per frame
@@ -21,7 +24,7 @@ public class PlayerControl : MonoBehaviour
     {
         /// Run: Input.GetAxis("Fire3")
         /// Jump: Input.GetAxis("Submit")
-
+        if (!isAlive) return;
         if (controlledBy != null) {  // For sitting down trigger
             return;
         }
