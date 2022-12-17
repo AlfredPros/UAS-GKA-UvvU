@@ -10,10 +10,15 @@ public class open_door : MonoBehaviour
     private bool doorFlag;
     private bool isCollide;
 
+    private bool generatorOff;
+
+    public GameObject player;
+
     private void Awake()
     {
         isCollide = false;
         doorFlag = false;
+        generatorOff = false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -26,8 +31,13 @@ public class open_door : MonoBehaviour
 
     private void Update()
     {
+        generatorOff = player.GetComponent<PlayerVariable>().generatorOff;
         if(isCollide)
         {
+            if (generatorOff) {
+                info.text = "Generator is off.";
+                return;
+            }
             info.text = "Press E to \nopen/close door";
         }
         if (Input.GetKeyDown(KeyCode.E) && !doorFlag && isCollide)
