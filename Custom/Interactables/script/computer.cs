@@ -9,11 +9,13 @@ public class computer : MonoBehaviour
     public Text mission;
     public Text comp_info;
     private bool isCollide;
-    private bool isGeneratorOn;
+    public bool isGeneratorOn;
     public bool have_keycard;
     public GameObject player;
     public GameObject ComputerUI;
     public bool door_lock;
+
+    private GameObject[] lights;
 
     private void Awake()
     {
@@ -22,6 +24,9 @@ public class computer : MonoBehaviour
         have_keycard = false;
         isCollide = false;
         isGeneratorOn = false;
+
+        if (lights == null) lights = GameObject.FindGameObjectsWithTag("Lights");
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -51,16 +56,18 @@ public class computer : MonoBehaviour
         if(!isGeneratorOn)
         {
             //turn off generator code here...
+            foreach (GameObject lightObject in lights) lightObject.SetActive(false);
             comp_info.text = "Generator has been turn off";
             isGeneratorOn = true;
         }
         else
         {
             //turn on generator code here...
+            foreach (GameObject lightObject in lights) lightObject.SetActive(true);
             comp_info.text = "Generator has been turn on";
             isGeneratorOn = false;
         }
-
+        player.GetComponent<PlayerVariable>().generatorOff = isGeneratorOn;
     }
 
     public void unlockButtonPressed()

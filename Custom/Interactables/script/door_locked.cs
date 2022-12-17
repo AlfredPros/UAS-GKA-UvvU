@@ -16,6 +16,7 @@ public class door_locked : MonoBehaviour
     private bool isCollide;
     private bool triggerOnce;
     public bool doorLocked;
+    private bool generator;
     private computer cs;
 
     private void Awake()
@@ -25,6 +26,7 @@ public class door_locked : MonoBehaviour
         doorLocked = true;
         doorFlag = false;
         triggerOnce = false;
+        generator = true;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -39,6 +41,8 @@ public class door_locked : MonoBehaviour
     private void Update()
     {
         doorLocked = cs.door_lock;
+        generator = cs.isGeneratorOn;
+    
 
         if (!doorLocked)
         {
@@ -47,12 +51,12 @@ public class door_locked : MonoBehaviour
                 this.GetComponent<MeshRenderer>().material = green_one;
                 indicator.color = Color.green;
             }
-            if (Input.GetKeyDown(KeyCode.E) && !doorFlag && isCollide)
+            if (Input.GetKeyDown(KeyCode.E) && !doorFlag && isCollide && !generator)
             {
                 doorAnim.SetBool("isOpen", true);
                 doorFlag = true;
             }
-            else if (Input.GetKeyDown(KeyCode.E) && doorFlag && isCollide)
+            else if (Input.GetKeyDown(KeyCode.E) && doorFlag && isCollide && generator)
             {
 
                 doorAnim.SetBool("isOpen", false);
@@ -66,9 +70,14 @@ public class door_locked : MonoBehaviour
     {
         if (!doorLocked)
         {
+            if (generator) {
+                info.text = "Generator is off.";
+                return;    
+            }
             info.text = "Press E to \nopen/close door";
             mission.text = "Mission:\ncreate yellow spheres in the storage room";         
         }
+
 
         else
         {

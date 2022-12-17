@@ -9,12 +9,13 @@ public class PlayerVariable : MonoBehaviour
     public Text info;
     public Text mission;
     public bool have_keycard;
+    public bool generatorOff;
     // Start is called before the first frame update
     void Awake()
     {
         mission.text = "Mission:\nGet the key card";
         have_keycard = false;
-        
+        generatorOff = false;
     }
 
     private void OnTriggerStay(Collider other)

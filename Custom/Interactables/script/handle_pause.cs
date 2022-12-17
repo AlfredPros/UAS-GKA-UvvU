@@ -17,13 +17,13 @@ public class handle_pause : MonoBehaviour
         pausedText.gameObject.SetActive(paused);
     }
 
-    private void Update() {
-        if (Input.GetKey(KeyCode.Escape)) {
+    private void OnGUI() {
+        if (Event.current.Equals(Event.KeyboardEvent("ESCAPE"))) {
             paused = !paused;
+            darken.gameObject.SetActive(paused);
+            pausedText.gameObject.SetActive(paused);
+            if (paused) Time.timeScale = 0;
+            else Time.timeScale = 1;
         }
-        darken.gameObject.SetActive(paused);
-        pausedText.gameObject.SetActive(paused);
-        if (paused) Time.timeScale = 0;
-        else Time.timeScale = 1;   
     }
 }
