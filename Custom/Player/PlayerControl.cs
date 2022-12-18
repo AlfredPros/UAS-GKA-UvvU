@@ -24,12 +24,16 @@ public class PlayerControl : MonoBehaviour
     {
         /// Run: Input.GetAxis("Fire3")
         /// Jump: Input.GetAxis("Submit")
-        if (!isAlive) return;
         if (controlledBy != null) {  // For sitting down trigger
             return;
         }
         float translation = Input.GetAxis("Vertical");
         this.transform.eulerAngles = new Vector3(0, camera.transform.localRotation.eulerAngles.y, 0);
+        if (!isAlive) {
+            anim.SetBool("isWalk", false);
+        	anim.SetFloat("speed", 0); 
+            return;
+        }
 
         // Jump Check
         if (Input.GetAxis("Submit") != 0) {

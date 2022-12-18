@@ -12,6 +12,8 @@ public class Oxygen : MonoBehaviour
     public bool isCollide;
     private bool triggerOnce;
 
+    public int limit = 15;
+
     public GameObject player;
 
     public Image deathScreen;
@@ -66,8 +68,8 @@ public class Oxygen : MonoBehaviour
     void Update()
     {
         if (oxygenLevel > 0) { 
-            color.a = Mathf.Clamp((float) (60 - oxygenLevel)/100, 0, 0.50f);
-            color.a =  Mathf.SmoothStep(0f, 0.6f, 1f - ((float) oxygenLevel/100));
+            // color.a = Mathf.Clamp((float) (limit - oxygenLevel)/limit, 0, 0.50f);
+            color.a = Mathf.SmoothStep(0f,0.5f, (float) (limit - oxygenLevel)/limit);
             deathScreen.color = color;
             Debug.Log("Death Screen" + deathScreen.color);
             Debug.Log("Color: " + color);
@@ -75,7 +77,6 @@ public class Oxygen : MonoBehaviour
 
         if (oxygenLevel < 0) {
             deathMessage.gameObject.SetActive(true);
-            // deathScreen.gameObject.SetActive(true);
             restartButton.gameObject.SetActive(true);
             endButton.gameObject.SetActive(true);
         }
