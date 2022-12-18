@@ -35,17 +35,16 @@ public class Oxygen : MonoBehaviour
         isCollide = false;
         oxygenLevel = 80;
         color = Color.red;
-        color.a = 0;
+        color.a = 0f;
         deathScreen.color = color;
         deathScreen.gameObject.SetActive(true);
     }
 
     IEnumerator CheckOxygenLevel()
     {
-        for(;oxygenLevel >= 0 ;) {
+        for(;oxygenLevel >= 0; oxygenLevel -= 1 ) {
             oxygenText.text = "Oxygen" + oxygenLevel + "%";
-            oxygenLevel -= 1;
-            yield return new WaitForSeconds(5f);
+            if (oxygenLevel > 0) yield return new WaitForSeconds(5f);
         }
         player.GetComponent<PlayerControl>().isAlive = false;
     }
@@ -66,12 +65,17 @@ public class Oxygen : MonoBehaviour
 
     void Update()
     {
-        color.a = Mathf.Clamp((100 - oxygenLevel)/100, 0, 1);
-        deathScreen.color = color;
+        if (oxygenLevel > 0) { 
+            color.a = Mathf.Clamp((float) (60 - oxygenLevel)/100, 0, 0.50f);
+            color.a =  Mathf.SmoothStep(0f, 0.6f, 1f - ((float) oxygenLevel/100));
+            deathScreen.color = color;
+            Debug.Log("Death Screen" + deathScreen.color);
+            Debug.Log("Color: " + color);
+        }
 
         if (oxygenLevel < 0) {
             deathMessage.gameObject.SetActive(true);
-            deathScreen.gameObject.SetActive(true);
+            // deathScreen.gameObject.SetActive(true);
             restartButton.gameObject.SetActive(true);
             endButton.gameObject.SetActive(true);
         }

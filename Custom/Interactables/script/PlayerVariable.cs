@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class PlayerVariable : MonoBehaviour
@@ -48,6 +49,15 @@ public class PlayerVariable : MonoBehaviour
       
         info.text = "";
         nearKeyCard = false;
+    }
+
+    public void restartGame() {
+         SceneManager.LoadScene( SceneManager.GetActiveScene().name );
+    }
+
+    public void endGame() {
+        Application.Quit();
+        UnityEditor.EditorApplication.isPlaying = false;
     }
 }
 
