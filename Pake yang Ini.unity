@@ -8778,7 +8778,7 @@ MonoBehaviour:
   info: {fileID: 867751071}
   mission: {fileID: 66335152}
   isCollide: 0
-  limit: 10
+  limit: 15
   player: {fileID: 349235422}
   deathScreen: {fileID: 1667803747}
   deathMessage: {fileID: 1504799594}
@@ -15897,6 +15897,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   darken: {fileID: 671910475}
   pausedText: {fileID: 1789747932}
+  player: {fileID: 349235422}
 --- !u!1001 &2056496747
 PrefabInstance:
   m_ObjectHideFlags: 0

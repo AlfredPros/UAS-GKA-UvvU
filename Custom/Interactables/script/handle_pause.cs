@@ -9,6 +9,8 @@ public class handle_pause : MonoBehaviour
     private bool paused;
     public Image darken;
     public Text pausedText;
+
+    public GameObject player;
      
 
     private void Awake() {
@@ -18,7 +20,9 @@ public class handle_pause : MonoBehaviour
     }
 
     private void OnGUI() {
+
         if (Event.current.Equals(Event.KeyboardEvent("ESCAPE"))) {
+            if (!player.GetComponent<PlayerControl>().isAlive) return;
             paused = !paused;
             darken.gameObject.SetActive(paused);
             pausedText.gameObject.SetActive(paused);
