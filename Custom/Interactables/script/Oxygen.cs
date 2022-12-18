@@ -68,7 +68,6 @@ public class Oxygen : MonoBehaviour
     void Update()
     {
         if (oxygenLevel > 0) { 
-            // color.a = Mathf.Clamp((float) (limit - oxygenLevel)/limit, 0, 0.50f);
             color.a = Mathf.SmoothStep(0f,0.5f, (float) (limit - oxygenLevel)/limit);
             deathScreen.color = color;
             Debug.Log("Death Screen" + deathScreen.color);
